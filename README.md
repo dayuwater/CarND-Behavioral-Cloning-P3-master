@@ -5,9 +5,9 @@
 Note 
 ---
 
-There are two versions of `movie.mp4`, one is `movie_9.mp4`, the other one is `movie_25.mp4`. `movie_9.mp4` is the recording of the simulator using default settings ( the original code ) in `drive.py`, where the car is driven in 9mph. `movie_25.mp4` uses my own modified `drive.py` where the car is driven in the maximum speed (25mph) that ensures not falling off the track. You may also notice that the car slows down when turning in `movie_25.mp4`. 
+There are two versions of `video.mp4`, one is `video_9.mp4`, the other one is `video_25.mp4`. `video_9.mp4` is the recording of the simulator using default settings ( the original code ) in `drive.py`, where the car is driven in 9mph. `video_25.mp4` uses my own modified `drive.py` where the car is driven in the maximum speed (25mph) that ensures not falling off the track. You may also notice that the car slows down when turning in `video_25.mp4`. 
 
-**Please use `movie_9.mp4` for grading purpose since that one uses the original `drive.py`. `movie_25.mp4` is just a result of my experiment**
+**Please use `video_9.mp4` for grading purpose since that one uses the original `drive.py`. `video_25.mp4` is just a result of my experiment**
 
 Overview
 ---
