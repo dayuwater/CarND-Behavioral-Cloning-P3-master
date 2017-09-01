@@ -37,6 +37,8 @@ for dirr in directories:
 from sklearn.model_selection import train_test_split
 train_samples, validation_samples = train_test_split(samples[1:], test_size=0.2)
 
+
+# A generator is required because the memory is severely limited on AWS
 def generator(samples, batch_size=32):
     num_samples = len(samples)
     while 1: # Loop forever so the generator never terminates
@@ -78,7 +80,7 @@ validation_generator = generator(validation_samples, batch_size=32)
 
 # NVidia Model
 # Need to add dropout layers to reduce overfitting
-# Do this after gathering more data. 2 Laps ccw driving, 2 laps cw driving, 1 lap of recovery driving, 1 lap curve driving
+
 model = Sequential()
 model.add(Cropping2D(cropping=((70,25), (0,0)), input_shape=(160,320,3)))
 model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160,320,3)))
