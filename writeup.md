@@ -143,7 +143,7 @@ Right:
 
 I started with the provided sample data. I used `video.py` on that data and turns that into a video, which proves to be much helpful for analyzing image series.
 
-According to my observation, the sample contains at least 4 laps of driving in both directions, clockwisely and counter-clockwisely. I also discovered the video is sometimes shaky, so I realized that the sample data also contains enough data for recovery driving. However, I did not find anything that is focus on driving smoothly on curves.
+According to my observation, the sample contains at least 4 laps of driving in each direction, clockwisely and counter-clockwisely. I also discovered the video is sometimes shaky, so I realized that the sample data also contains enough data for recovery driving. However, I did not find anything that is focus on driving smoothly on curves.
 
 I then put this dataset into the model stated above. The car could navigate correctly for most of the time, except at the position shown in the image below. The car will drive into the ramp every time the car passes here, and forced to stop due to terrain. 
 
