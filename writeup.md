@@ -18,13 +18,12 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image1]: ./images/center.jpg "Center"
+[image2]: ./images/left.jpg "Left"
+[image3]: ./images/right.jpg "Right"
+[image4]: ./images/curve.jpg "Curve"
+[image5]: ./images/straight.jpg "Straight"
+
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -127,13 +126,28 @@ The final model architecture (model.py lines 84-98) consisted of a convolution n
 
 #### 3. Creation of the Training Set & Training Process
 
+The simulator can generate three images for each frame. One is a center image that is shoot at the center of the car, the other two are left image that shows the left side of the car and right image that shows the right side of the car.
+
+Center:
+
+![alt text][image1]
+
+Left:
+
+![alt text][image2]
+
+Right:
+
+![alt text][image3]
+
+
 I started with the provided sample data. I used `video.py` on that data and turns that into a video, which proves to be much helpful for analyzing image series.
 
 According to my observation, the sample contains at least 4 laps of driving in both directions, clockwisely and counter-clockwisely. I also discovered the video is sometimes shaky, so I realized that the sample data also contains enough data for recovery driving. However, I did not find anything that is focus on driving smoothly on curves.
 
 I then put this dataset into the model stated above. The car could navigate correctly for most of the time, except at the position shown in the image below. The car will drive into the ramp every time the car passes here, and forced to stop due to terrain. 
 
-![alt text][image6]
+![alt text][image4]
 
 As you can see, this curve looks different to other curves. There is no red and white pavement on some parts of the curve, which I believe this tricks the car to think it is a straight segment instead of a curve.
 
@@ -141,9 +155,9 @@ In order to solve this problem, I recorded another dataset that focused just on 
 
 I then put this dataset along with the provided sample dataset into the model. The car can now navigate this part of the track correctly, but a new problem arised. The car falls off this part of the track. It thinks this is a left-turning curve.
 
-![alt text][image6]
+![alt text][image5]
 
-I realized my augmented dataset generated in last might step might be a overkill. I then recorded another dataset that focused on driving straightly on the part above. 
+I realized my augmented dataset generated in last might step might be a overkill. In addition, the grass on the left side of the road act like a wall, and the no grass part looks very similarly to a valid road, which tricks the car to think it is a left turn instead of going straight.  I then recorded another dataset that focused on driving straightly on the part above. 
 
 I then put all the 3 datasets into the network, and the result is good. The car can stay on track all the time for 10 minutes at 9mph. I then changed `drive.py` to let the car drive at 25mph and slow down on curves, the result is good too, although the car is shaking on some portion of straight tracks.
 
